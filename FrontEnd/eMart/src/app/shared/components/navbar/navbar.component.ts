@@ -13,12 +13,18 @@ export class NavbarComponent implements OnInit, DoCheck {
   constructor(private router: Router) { }
 
    isSignin: boolean;
+   isBuyer:boolean;
+   isSellter:boolean;
+   isAdmin:boolean;
 
   ngOnInit(): void {
     if (sessionStorage.getItem('token')){
       this.isSignin = true;
     } else {
       this.isSignin = false;
+      this.isBuyer = false;
+      this.isSellter = false;
+      this.isAdmin = false;
     }
   }
 
@@ -36,12 +42,32 @@ export class NavbarComponent implements OnInit, DoCheck {
     this.router.navigate(['sign-in']);
   }
 
-  viewProducts(){
-    this.navClick.emit('products');
+  viewOrder(){
+    this.navClick.emit('buyerOrder');
+  }
+
+  viewReport(){
+    this.navClick.emit('sellerReport');
+  }
+
+  viewCategory(){
+    this.navClick.emit('category');
+  }
+
+  viewItem(){
+    this.navClick.emit('itemManagement');
+  }
+
+  viewUser(){
+    this.navClick.emit('userManagement');
+  }
+
+  viewAbout(){
+    this.navClick.emit('about');
   }
 
   signIn() {
-    // this.navClick.emit('sign-in');
+    this.navClick.emit('sign-in');
   }
 
   register() {
