@@ -30,22 +30,22 @@ export class HomeDetailComponent implements OnInit {
     //   {name : 'FREIZ', id: 2},
     //   {name : 'CB JAPAN', id: 3}
     // ];
-    this.service.getManufacturers().subscribe(data => {
-      console.log(JSON.stringify(data));
-      const manu: any = data;
-      this.manufacturers = manu.result;
-    });
-    this.searchItem = {
-      startPrice: '',
-      endPrice: '',
-      manufacturer: '',
-    }
-    // this.products$ = this.service.getProducts(this.searchItem);
-    this.service.getProducts(this.searchItem).subscribe(data => {
-      console.log(JSON.stringify(data));
-      const info: any = data;
-      this.products = info.result;
-    });
+    // this.service.getManufacturers().subscribe(data => {
+    //   console.log(JSON.stringify(data));
+    //   const manu: any = data;
+    //   this.manufacturers = manu.result;
+    // });
+    // this.searchItem = {
+    //   startPrice: '',
+    //   endPrice: '',
+    //   manufacturer: '',
+    // }
+    // // this.products$ = this.service.getProducts(this.searchItem);
+    // this.service.getProducts(this.searchItem).subscribe(data => {
+    //   console.log(JSON.stringify(data));
+    //   const info: any = data;
+    //   this.products = info.result;
+    // });
   }
 
   togglePaused() {
