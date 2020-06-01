@@ -1,5 +1,3 @@
-#Create User Table   role = 0 ->admin  role=1->seller  role=2->buyer
-DROP TABLE if exists `emart`.`user`;
 CREATE TABLE `emart`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
@@ -14,8 +12,7 @@ CREATE TABLE `emart`.`user` (
   `website` VARCHAR(45) NULL,
   `role` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
+DEFAULT CHARACTER SET = utf8
 COMMENT = 'User table to store user information';
