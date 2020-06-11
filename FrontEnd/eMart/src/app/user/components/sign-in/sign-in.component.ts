@@ -2,13 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import { Router } from '@angular/router';
 
-interface Alert {
-  type: string;
-  message: string;
-}
-
-const ALERTS: Alert[] = [];
-
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -17,11 +10,12 @@ const ALERTS: Alert[] = [];
 
 export class SignInComponent implements OnInit {
 
-  alerts: Alert[];
-
   constructor(private userService: UserService, private router: Router) {
     this.reset();
   }
+
+  name_required:boolean;
+  password_required:boolean;
 
   ngOnInit(): void {
     if (sessionStorage.getItem('token')) {
@@ -42,7 +36,7 @@ export class SignInComponent implements OnInit {
               this.router.navigate(['/products']);
           } else {
             console.log('登录失败，弹出MSG');
-            this.alerts.push({type : 'danger', message: 'username or password error!'});
+            // this.alerts.push({type : 'danger', message: 'username or password error!'});
 
           }
         }
@@ -51,27 +45,32 @@ export class SignInComponent implements OnInit {
   }
   /* 验证输入项 */
   validInput(value: any): boolean {
-    console.log(value.name);
     this.reset();
-    let result = true
     if (!value.name) {
-      this.alerts.push({type : 'danger', message: 'username required!'});
-      result = false;
+      // this.alerts.push({type : 'danger', message: 'username required!'});
+      this.name_required = true;
+      return false;
+    }else{
+      this.name_required = false;
     }
 
     if (!value.password) {
-      this.alerts.push({type : 'danger', message: 'password required!'});
-      result =  false;
+      this.password_required = true;
+      return false;
+    }else{
+      this.password_required = false;
     }
-    return result;
+    return true;
   }
 
-  close(alert: Alert) {
-    this.alerts.splice(this.alerts.indexOf(alert), 1);
+  close() { 
+    console.log(this.name_required, this.password_required);
+    this.reset();
   }
 
   reset() {
-    this.alerts = Array.from(ALERTS);
+    this.name_required = false;
+    this.password_required = false;
   }
 
 }
