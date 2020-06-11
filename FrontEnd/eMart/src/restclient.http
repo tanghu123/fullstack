@@ -1,0 +1,11 @@
+@hostname = localhost
+@port = 8081
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@createdAt = {{$datetime iso8601}}
+
+###
+
+@name = user
+
+DELETE  http://{{host}}/{{name}}/2 HTTP/1.1

@@ -1,2 +1,2 @@
 #Add Admin User
-insert into emart.user(username, password,role) values('admin', 'admin', 0);
+insert into emart.user(name, username, password,role) values('Administrator','admin', 'admin', 0);

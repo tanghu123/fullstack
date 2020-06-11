@@ -1,5 +1,5 @@
 <!-- 顶级父组件：定义页面的整体轮廓 -->
-<app-navbar (navClick)="handleNavClick($event)"></app-navbar>
+<app-navbar *ngIf="!headerFooter" (navClick)="handleNavClick($event)"></app-navbar>
 
 <div class="div-main">
   <div class="row">
@@ -10,5 +10,5 @@
   </div>
 </div>
 
-<app-footer></app-footer>
+<app-footer *ngIf="!headerFooter"></app-footer>
 

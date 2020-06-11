@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    console.log('docheck');
+    // console.log('docheck');
     if (sessionStorage.getItem('token')){
       this.isSignin = true;
     } else {

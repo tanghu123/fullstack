@@ -25,7 +25,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     if (sessionStorage.getItem('token')) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/products']);
     }
   }
 
@@ -39,10 +39,11 @@ export class SignInComponent implements OnInit {
           if (200 === info.code) {
               console.log('登录成功，调转详情页');
               sessionStorage.setItem('token', info.result.token)
-              this.router.navigate(['/home']);
+              this.router.navigate(['/products']);
           } else {
             console.log('登录失败，弹出MSG');
             this.alerts.push({type : 'danger', message: 'username or password error!'});
+
           }
         }
       );
@@ -50,6 +51,7 @@ export class SignInComponent implements OnInit {
   }
   /* 验证输入项 */
   validInput(value: any): boolean {
+    console.log(value.name);
     this.reset();
     let result = true
     if (!value.name) {
@@ -59,11 +61,6 @@ export class SignInComponent implements OnInit {
 
     if (!value.password) {
       this.alerts.push({type : 'danger', message: 'password required!'});
-      result =  false;
-    }
-
-    if (value.password.length < 6) {
-      this.alerts.push({type : 'danger', message: 'password length must be greater than 6!'});
       result =  false;
     }
     return result;
@@ -77,7 +74,4 @@ export class SignInComponent implements OnInit {
     this.alerts = Array.from(ALERTS);
   }
 
-  onClick() {
-    console.log('onclick');
-  }
 }
