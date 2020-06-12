@@ -8,4 +8,5 @@
 
 @name = user
 
-DELETE  http://{{host}}/{{name}}/2 HTTP/1.1
+POST   http://{{host}}/{{name}}/add HTTP/1.1
+# DELETE http://{{host}}/{{name}}/4 HTTP/1.1

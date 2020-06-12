@@ -4,13 +4,13 @@
     <label for="inputEmail" class="sr-only">Email address</label>
     <input ngModel name="name" type="email" id="inputEmail" class="form-control" placeholder="Email address" required
       autofocus>
-    <div *ngIf="name_required" class="alert alert-danger" (click)="close()">
+    <div *ngIf="name_required" class="alert alert-danger" (click)="name_required=!name_required">
       User Name is required.
     </div>
     <label for="inputPassword" class="sr-only">Password</label>
     <input ngModel name="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
       required>
-      <div *ngIf="password_required" class="alert alert-danger" (click)="close()">
+      <div *ngIf="password_required" class="alert alert-danger" (click)="password_required=!password_required">
         Password is required.
       </div>
     <div class="checkbox mb-3">

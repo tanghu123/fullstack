@@ -2,18 +2,12 @@
     text-align: center;
     display: flex;
     align-items: center;
-    margin-top: 80px;
-    padding-top: 40px;
-    padding-bottom: 40px;
   }
   .form-signup {
     width: 100%;
-    max-width: 330px;
+    max-width: 430px;
     padding: 15px;
     margin: auto;
-  }
-  .form-signup .checkbox {
-    font-weight: 400;
   }
   .form-signup .form-control {
     position: relative;
@@ -25,14 +19,14 @@
   .form-signup .form-control:focus {
     z-index: 2;
   }
-  .form-signup input[type="email"] {
-    margin-bottom: -1px;
+  .form-signup input{
+    margin-bottom: 10px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
-  .form-signup input[type="password"] {
+  .form-signup textarea{
     margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
   

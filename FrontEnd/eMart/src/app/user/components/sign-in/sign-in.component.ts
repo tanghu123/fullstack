@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class SignInComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) {
-    this.reset();
   }
 
   name_required:boolean;
@@ -45,7 +44,6 @@ export class SignInComponent implements OnInit {
   }
   /* 验证输入项 */
   validInput(value: any): boolean {
-    this.reset();
     if (!value.name) {
       // this.alerts.push({type : 'danger', message: 'username required!'});
       this.name_required = true;
@@ -61,16 +59,6 @@ export class SignInComponent implements OnInit {
       this.password_required = false;
     }
     return true;
-  }
-
-  close() { 
-    console.log(this.name_required, this.password_required);
-    this.reset();
-  }
-
-  reset() {
-    this.name_required = false;
-    this.password_required = false;
   }
 
 }
