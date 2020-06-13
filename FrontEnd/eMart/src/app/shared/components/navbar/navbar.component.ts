@@ -1,5 +1,5 @@
-import {Component, DoCheck, EventEmitter, OnInit, Output} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, DoCheck, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,25 +12,35 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   constructor(private router: Router) { }
 
-   isSignin: boolean;
-   isBuyer:boolean;
-   isSellter:boolean;
-   isAdmin:boolean;
+  isSignin: boolean;
+  isBuyer: boolean;
+  isSellter: boolean;
+  isAdmin: boolean;
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('token')){
+    this.reset();
+    if (sessionStorage.getItem('token')) {
       this.isSignin = true;
-    } else {
-      this.isSignin = false;
-      this.isBuyer = false;
-      this.isSellter = false;
-      this.isAdmin = false;
     }
+    if(sessionStorage.getItem('role')){
+      switch(parseInt(sessionStorage.getItem('role'))){
+        case(0): this.isAdmin = true;break;
+        case(1): this.isBuyer = true;break;
+        case(2): this.isSellter = true;
+      }
+    }
+  }
+
+  reset() {
+    this.isSignin = false;
+    this.isBuyer = false;
+    this.isSellter = false;
+    this.isAdmin = false;
   }
 
   ngDoCheck(): void {
     // console.log('docheck');
-    if (sessionStorage.getItem('token')){
+    if (sessionStorage.getItem('token')) {
       this.isSignin = true;
     } else {
       this.isSignin = false;
@@ -42,27 +52,40 @@ export class NavbarComponent implements OnInit, DoCheck {
     this.router.navigate(['sign-in']);
   }
 
-  viewOrder(){
+  viewHome() {
+    if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
+      switch (sessionStorage.getItem('role')) {
+        case ('2'): this.navClick.emit('seller_item'); break;
+        case ('1'): this.navClick.emit('buyer_products'); break;
+        case ('0'): this.navClick.emit('admin_dashboard');
+      }
+    }else{
+      this.navClick.emit('buyer_products');
+    }
+    
+  }
+
+  viewOrder() {
     this.navClick.emit('buyerOrder');
   }
 
-  viewReport(){
-    this.navClick.emit('sellerReport');
+  viewReport() {
+    this.navClick.emit('seller_report');
   }
 
-  viewCategory(){
+  viewCategory() {
     this.navClick.emit('category');
   }
 
-  viewItem(){
+  viewItem() {
     this.navClick.emit('itemManagement');
   }
 
-  viewUser(){
+  viewUser() {
     this.navClick.emit('userManagement');
   }
 
-  viewAbout(){
+  viewAbout() {
     this.navClick.emit('about');
   }
 

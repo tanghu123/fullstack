@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { BrowserStack } from 'protractor/built/driverProviders';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,8 +21,12 @@ export class SignInComponent implements OnInit {
   login_fail_message: string;
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('token')) {
-      this.router.navigate(['/products']);
+    if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
+      switch (sessionStorage.getItem('role')) {
+        case ('2'): this.router.navigate(['seller_item']); break;
+        case ('1'): this.router.navigate(['buyer_products']); break;
+        case ('0'): this.router.navigate(['admin_dashboard']);
+      }
     }
   }
 
@@ -37,7 +42,7 @@ export class SignInComponent implements OnInit {
             console.log('登录成功，调转详情页');
             sessionStorage.setItem('token', info.token);
             sessionStorage.setItem('role', info.role);
-            this.router.navigate(['/products']);
+            this.router.navigate(['/home']);
           } else {
             this.login_fail = true;
             this.login_fail_message = info.message;
@@ -79,7 +84,7 @@ export class SignInComponent implements OnInit {
     }
     return true;
   }
-  reset(){
+  reset() {
     this.name_required = false;
     this.password_required = false;
     this.login_fail = false;

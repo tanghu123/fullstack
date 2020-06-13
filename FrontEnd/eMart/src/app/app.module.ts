@@ -8,21 +8,27 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {UserModule} from './user/user.module';
 import {ProductModule} from './product/product.module';
 import {HomeModule} from './home/home.module';
+import { AboutComponent } from './about/about.component';
+import {SellerModule}  from './seller/seller.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    SharedModule,
-    UserModule,
-    ProductModule,
-    HomeModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      AboutComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      NgbModule,
+      SharedModule,
+      UserModule,
+      ProductModule,
+      HomeModule,
+      SellerModule
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

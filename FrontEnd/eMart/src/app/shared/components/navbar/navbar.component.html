@@ -1,28 +1,29 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Home</a>
-
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li *ngIf="isBuyer" class="nav-item active list-inline">
-        <a class="nav-link" (click)="viewOrder()">My Order</a>
+      <li class="nav-item list-inline">
+        <a class="navbar-brand" (click)="viewHome()">Home</a>
       </li>
-      <li *ngIf="isSellter" class="nav-item active list-inline">
-        <a class="nav-link" (click)="viewReport()">My Report</a>
+      <li *ngIf="isBuyer" class="nav-item list-inline">
+        <a class="navbar-brand" (click)="viewOrder()">My Order</a>
       </li>
-      <li *ngIf="isAdmin" class="nav-item active list-inline">
-        <a class="nav-link" (click)="viewCategory()">Category</a>
+      <li *ngIf="isSellter" class="nav-item list-inline">
+        <a class="navbar-brand" (click)="viewReport()">My Report</a>
       </li>
-      <li *ngIf="isAdmin" class="nav-item active list-inline">
-        <a class="nav-link" (click)="viewItem()">Item Management</a>
+      <li *ngIf="isAdmin" class="nav-item list-inline">
+        <a class="navbar-brand" (click)="viewCategory()">Category</a>
       </li>
-      <li *ngIf="isAdmin" class="nav-item active list-inline">
-        <a class="nav-link" (click)="viewUser()">User Management</a>
+      <li *ngIf="isAdmin" class="nav-item list-inline">
+        <a class="navbar-brand" (click)="viewItem()">Item Management</a>
       </li>
-      <li class="nav-item active list-inline">
-        <a class="nav-link" (click)="viewAbout()">About</a>
+      <li *ngIf="isAdmin" class="nav-item list-inline">
+        <a class="navbar-brand" (click)="viewUser()">User Management</a>
+      </li>
+      <li class="nav-item list-inline">
+        <a class="navbar-brand" (click)="viewAbout()">About</a>
       </li>
     </ul>
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" *ngIf="isBuyer">
       <li class="nav-item active list-inline">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

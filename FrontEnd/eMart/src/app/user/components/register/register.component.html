@@ -14,6 +14,9 @@
       <input ngModel name="password" type="password" id="password" class="form-control" placeholder="Password" required>
       <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
       <input ngModel name="email" type="email" id="email" class="form-control" placeholder="Email Address" required>
+      <div *ngIf="email_required" class="alert alert-danger" (click)="email_required=!email_required">
+        {{email_requiredMessage}}.
+      </div>
       <input ngModel name="phone_number" type="phoneNumber" id="phoneNumber" class="form-control"
         placeholder="Phone Number" required>
       <div class="custom-control custom-radio custom-control-inline ">

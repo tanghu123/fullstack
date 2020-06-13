@@ -15,18 +15,24 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('token')) {
-      this.router.navigate(['/products']);
+    if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
+      switch (sessionStorage.getItem('role')) {
+        case ('2'): this.router.navigate(['seller_item']); break;
+        case ('1'): this.router.navigate(['buyer_products']); break;
+        case ('0'): this.router.navigate(['admin_dashboard']);
+      }
     }
   }
 
   seller: boolean;
   name_required: boolean;
   userName_required: boolean;
+  email_required:boolean;
   show_success: boolean;
   error_message: string;
   show_fail: boolean;
   userName_errorMessage: string;
+  email_requiredMessage:string;
 
   /* 注册操作 */
   onSubmit(value: any) {
@@ -47,8 +53,9 @@ export class RegisterComponent implements OnInit {
           if (errorDetail.indexOf('username_UNIQUE')) {
             this.userName_errorMessage = "User Name is already existed!"
             this.userName_required = true;
-          } else if (errorDetail.indexOf('username_UNIQUE')) {
-
+          } else if (errorDetail.indexOf('email_UNIQUE')) {
+            this.email_required = true;
+            this.email_requiredMessage = "Email is already existed!";
           } else {
             this.show_fail = true;
             this.error_message = errorRes.error.error;
@@ -68,6 +75,11 @@ export class RegisterComponent implements OnInit {
       this.userName_required = true;
       return false;
     }
+    if(!value.email){
+      this.email_required = true;
+      this.email_requiredMessage = "Email is required!";
+      return false;
+    }
     if(this.seller){
       value.role = 2;
     }else{
@@ -81,10 +93,11 @@ export class RegisterComponent implements OnInit {
   }
 
   reset() {
-    this.seller = false;
+    // this.seller = false;
     this.name_required = false;
     this.userName_required = false;
     this.show_success = false;
     this.show_fail = false;
+    this.email_required = false;
   }
 }
