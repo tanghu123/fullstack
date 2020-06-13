@@ -18,9 +18,9 @@ export class AppComponent {
   ngOnInit() {
     if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
       switch (sessionStorage.getItem('role')) {
-        case ('2'): this.router.navigate(['seller_item']); break;
-        case ('1'): this.router.navigate(['buyer_products']); break;
-        case ('0'): this.router.navigate(['admin_dashboard']);
+        case ('2'): this.router.navigate(['seller/item']); break;
+        case ('1'): this.router.navigate(['buyer/products']); break;
+        case ('0'): this.router.navigate(['admin/dashboard']);
       }
     }
     this.router.events

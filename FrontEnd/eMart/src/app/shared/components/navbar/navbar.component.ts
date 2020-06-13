@@ -55,34 +55,34 @@ export class NavbarComponent implements OnInit, DoCheck {
   viewHome() {
     if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
       switch (sessionStorage.getItem('role')) {
-        case ('2'): this.navClick.emit('seller_item'); break;
-        case ('1'): this.navClick.emit('buyer_products'); break;
-        case ('0'): this.navClick.emit('admin_dashboard');
+        case ('2'): this.navClick.emit('seller/item'); break;
+        case ('1'): this.navClick.emit('buyer/products'); break;
+        case ('0'): this.navClick.emit('admin/dashboard');
       }
     }else{
-      this.navClick.emit('buyer_products');
+      this.navClick.emit('buyer/products');
     }
     
   }
 
   viewOrder() {
-    this.navClick.emit('buyerOrder');
+    this.navClick.emit('buyer/order');
   }
 
   viewReport() {
-    this.navClick.emit('seller_report');
+    this.navClick.emit('seller/report');
   }
 
   viewCategory() {
-    this.navClick.emit('category');
+    this.navClick.emit('admin/category');
   }
 
   viewItem() {
-    this.navClick.emit('itemManagement');
+    this.navClick.emit('admin/itemmgt');
   }
 
   viewUser() {
-    this.navClick.emit('userManagement');
+    this.navClick.emit('admin/usermgt');
   }
 
   viewAbout() {

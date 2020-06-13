@@ -10,6 +10,8 @@ import {ProductModule} from './product/product.module';
 import {HomeModule} from './home/home.module';
 import { AboutComponent } from './about/about.component';
 import {SellerModule}  from './seller/seller.module';
+import {BuyerModule}  from './buyer/buyer.module';
+import {AdminModule} from './admin/admin.module'; 
 
 @NgModule({
    declarations: [
@@ -24,7 +26,9 @@ import {SellerModule}  from './seller/seller.module';
       UserModule,
       ProductModule,
       HomeModule,
-      SellerModule
+      SellerModule,
+      BuyerModule,
+      AdminModule
    ],
    providers: [],
    bootstrap: [

@@ -23,9 +23,9 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
       switch (sessionStorage.getItem('role')) {
-        case ('2'): this.router.navigate(['seller_item']); break;
-        case ('1'): this.router.navigate(['buyer_products']); break;
-        case ('0'): this.router.navigate(['admin_dashboard']);
+        case ('2'): this.router.navigate(['seller/item']); break;
+        case ('1'): this.router.navigate(['buyer/products']); break;
+        case ('0'): this.router.navigate(['admin/dashboard']);
       }
     }
   }
@@ -42,7 +42,11 @@ export class SignInComponent implements OnInit {
             console.log('登录成功，调转详情页');
             sessionStorage.setItem('token', info.token);
             sessionStorage.setItem('role', info.role);
-            this.router.navigate(['/home']);
+            switch (info.role) {
+              case ('2'): this.router.navigate(['seller/item']); break;
+              case ('1'): this.router.navigate(['buyer/products']); break;
+              case ('0'): this.router.navigate(['admin/dashboard']);
+            }
           } else {
             this.login_fail = true;
             this.login_fail_message = info.message;

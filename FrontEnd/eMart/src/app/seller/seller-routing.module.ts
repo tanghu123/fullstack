@@ -5,8 +5,8 @@ import { ReportComponent } from './componet/report/report.component';
 
 
 const routes: Routes = [
-  { path: 'seller_item', component: ItemComponent },
-  { path: 'seller_report', component: ReportComponent }
+  { path: 'seller/item', component: ItemComponent },
+  { path: 'seller/report', component: ReportComponent }
 ];
 
 @NgModule({

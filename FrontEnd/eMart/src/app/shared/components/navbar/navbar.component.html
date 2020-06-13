@@ -2,13 +2,13 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item list-inline">
-        <a class="navbar-brand" (click)="viewHome()">Home</a>
+        <a class="navbar-brand active" (click)="viewHome()">Home</a>
       </li>
       <li *ngIf="isBuyer" class="nav-item list-inline">
         <a class="navbar-brand" (click)="viewOrder()">My Order</a>
       </li>
       <li *ngIf="isSellter" class="nav-item list-inline">
-        <a class="navbar-brand" (click)="viewReport()">My Report</a>
+        <a class="navbar-brand " (click)="viewReport()">My Report</a>
       </li>
       <li *ngIf="isAdmin" class="nav-item list-inline">
         <a class="navbar-brand" (click)="viewCategory()">Category</a>
