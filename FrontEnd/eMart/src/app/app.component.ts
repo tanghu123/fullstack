@@ -18,9 +18,9 @@ export class AppComponent {
   ngOnInit() {
     if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
       switch (sessionStorage.getItem('role')) {
+        case ('0'): this.router.navigate(['admin/dashboard']); break;
         case ('2'): this.router.navigate(['seller/item']); break;
-        case ('1'): this.router.navigate(['buyer/products']); break;
-        case ('0'): this.router.navigate(['admin/dashboard']);
+        default: this.router.navigate(['buyer/products']);
       }
     }
     this.router.events
@@ -28,7 +28,7 @@ export class AppComponent {
         if (event instanceof NavigationEnd) {
           if (event.url == '/sign-in' || event.url == '/register') {
             this.headerFooter = true;
-          }else{
+          } else {
             this.headerFooter = false;
           }
         }

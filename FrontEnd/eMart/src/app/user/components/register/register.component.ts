@@ -17,9 +17,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
       switch (sessionStorage.getItem('role')) {
+        case ('0'): this.router.navigate(['admin/dashboard']); break;
         case ('2'): this.router.navigate(['seller/item']); break;
-        case ('1'): this.router.navigate(['buyer/products']); break;
-        case ('0'): this.router.navigate(['admin/dashboard']);
+        default: this.router.navigate(['buyer/products']);
       }
     }
   }
@@ -27,12 +27,12 @@ export class RegisterComponent implements OnInit {
   seller: boolean;
   name_required: boolean;
   userName_required: boolean;
-  email_required:boolean;
+  email_required: boolean;
   show_success: boolean;
   error_message: string;
   show_fail: boolean;
   userName_errorMessage: string;
-  email_requiredMessage:string;
+  email_requiredMessage: string;
 
   /* 注册操作 */
   onSubmit(value: any) {
@@ -75,14 +75,14 @@ export class RegisterComponent implements OnInit {
       this.userName_required = true;
       return false;
     }
-    if(!value.email){
+    if (!value.email) {
       this.email_required = true;
       this.email_requiredMessage = "Email is required!";
       return false;
     }
-    if(this.seller){
+    if (this.seller) {
       value.role = 2;
-    }else{
+    } else {
       value.role = 1;
     }
     return true;

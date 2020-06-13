@@ -22,11 +22,11 @@ export class NavbarComponent implements OnInit, DoCheck {
     if (sessionStorage.getItem('token')) {
       this.isSignin = true;
     }
-    if(sessionStorage.getItem('role')){
-      switch(parseInt(sessionStorage.getItem('role'))){
-        case(0): this.isAdmin = true;break;
-        case(1): this.isBuyer = true;break;
-        case(2): this.isSellter = true;
+    if (sessionStorage.getItem('role')) {
+      switch (parseInt(sessionStorage.getItem('role'))) {
+        case (0): this.isAdmin = true; break;
+        case (2): this.isSellter = true; break;
+        default: this.isBuyer = true;
       }
     }
   }
@@ -55,14 +55,14 @@ export class NavbarComponent implements OnInit, DoCheck {
   viewHome() {
     if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
       switch (sessionStorage.getItem('role')) {
-        case ('2'): this.navClick.emit('seller/item'); break;
-        case ('1'): this.navClick.emit('buyer/products'); break;
-        case ('0'): this.navClick.emit('admin/dashboard');
+        case ('0'): this.router.navigate(['admin/dashboard']); break;
+        case ('2'): this.router.navigate(['seller/item']); break;
+        default: this.router.navigate(['buyer/products']);
       }
-    }else{
+    } else {
       this.navClick.emit('buyer/products');
     }
-    
+
   }
 
   viewOrder() {

@@ -23,9 +23,9 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
       switch (sessionStorage.getItem('role')) {
+        case ('0'): this.router.navigate(['admin/dashboard']); break;
         case ('2'): this.router.navigate(['seller/item']); break;
-        case ('1'): this.router.navigate(['buyer/products']); break;
-        case ('0'): this.router.navigate(['admin/dashboard']);
+        default: this.router.navigate(['buyer/products']);
       }
     }
   }
@@ -43,9 +43,10 @@ export class SignInComponent implements OnInit {
             sessionStorage.setItem('token', info.token);
             sessionStorage.setItem('role', info.role);
             switch (info.role) {
+              case ('0'): this.router.navigate(['admin/dashboard']); break;
               case ('2'): this.router.navigate(['seller/item']); break;
-              case ('1'): this.router.navigate(['buyer/products']); break;
-              case ('0'): this.router.navigate(['admin/dashboard']);
+              default: this.router.navigate(['buyer/products']);
+
             }
           } else {
             this.login_fail = true;
