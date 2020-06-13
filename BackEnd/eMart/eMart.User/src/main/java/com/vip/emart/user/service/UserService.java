@@ -1,6 +1,7 @@
 package com.vip.emart.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -24,4 +25,6 @@ public interface UserService {
 	public void lockUser(int id);
 	
 	public void unlockUser(int id);
+	
+	public Map<String, Object> verifyUser(User user);	
 }

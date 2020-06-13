@@ -1,5 +1,6 @@
 package com.vip.emart.user.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vip.emart.user.entity.User;
 import com.vip.emart.user.service.UserService;
+import com.vip.emart.utils.eMartUtils;
 
 @RestController
 @RequestMapping("user")
@@ -32,6 +34,9 @@ public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> saveUser(@RequestBody User user){
+		user.setStatus(1);
+		user.setCreate_date(new Date());
+		user.setPassword(eMartUtils.encodePassword(user.getPassword()));
 		service.addUser(user);
 		logger.info("Add new User " + user.toString());
 		return ResponseEntity.status(HttpStatus.CREATED).build();

@@ -18,7 +18,7 @@ export class UserService {
   }
 
   postSignIn(user) {
-    return this.http.post(`${environment.baseUrl}/user/login`, JSON.stringify(user), httpOptions);
+    return this.http.post(`${environment.baseUrl}/login`, JSON.stringify(user), httpOptions);
   }
 
   postSignUp(user) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,10 +11,13 @@ import { Router } from '@angular/router';
 export class SignInComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) {
+    this.reset();
   }
 
-  name_required:boolean;
-  password_required:boolean;
+  name_required: boolean;
+  password_required: boolean;
+  login_fail: boolean;
+  login_fail_message: string;
 
   ngOnInit(): void {
     if (sessionStorage.getItem('token')) {
@@ -24,20 +27,36 @@ export class SignInComponent implements OnInit {
 
   /* 登录操作 */
   onSubmit(value: any) {
+    this.reset();
     if (this.validInput(value)) {
       this.userService.postSignIn(value).subscribe(
         data => {
-          console.log(JSON.stringify(data));
           const info: any = data;
-          if (200 === info.code) {
-              console.log('登录成功，调转详情页');
-              sessionStorage.setItem('token', info.result.token)
-              this.router.navigate(['/products']);
+          console.log("result", info);
+          if (info.result == 1) {
+            console.log('登录成功，调转详情页');
+            sessionStorage.setItem('token', info.token);
+            sessionStorage.setItem('role', info.role);
+            this.router.navigate(['/products']);
           } else {
-            console.log('登录失败，弹出MSG');
-            // this.alerts.push({type : 'danger', message: 'username or password error!'});
-
+            this.login_fail = true;
+            this.login_fail_message = info.message;
           }
+          // console.log(JSON.stringify(data));
+          // const info: any = data;
+          // console.log(info);
+          // if (200 === info.status) {
+          //     console.log('登录成功，调转详情页');
+          //     sessionStorage.setItem('token', info.result.token)
+          //     this.router.navigate(['/products']);
+          // } else {
+          //   console.log('登录失败，弹出MSG');
+          //   // this.alerts.push({type : 'danger', message: 'username or password error!'});
+
+          // }
+        },
+        errorRes => {
+          console.log("Post Error:", errorRes);
         }
       );
     }
@@ -48,17 +67,22 @@ export class SignInComponent implements OnInit {
       // this.alerts.push({type : 'danger', message: 'username required!'});
       this.name_required = true;
       return false;
-    }else{
+    } else {
       this.name_required = false;
     }
 
     if (!value.password) {
       this.password_required = true;
       return false;
-    }else{
+    } else {
       this.password_required = false;
     }
     return true;
+  }
+  reset(){
+    this.name_required = false;
+    this.password_required = false;
+    this.login_fail = false;
   }
 
 }

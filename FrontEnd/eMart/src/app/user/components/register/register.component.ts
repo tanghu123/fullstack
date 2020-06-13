@@ -11,6 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 export class RegisterComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) {
+    this.reset();
   }
 
   ngOnInit(): void {
@@ -22,18 +23,36 @@ export class RegisterComponent implements OnInit {
   seller: boolean;
   name_required: boolean;
   userName_required: boolean;
+  show_success: boolean;
+  error_message: string;
+  show_fail: boolean;
+  userName_errorMessage: string;
 
-  /* 登录操作 */
+  /* 注册操作 */
   onSubmit(value: any) {
     this.reset();
     if (this.validInput(value)) {
       this.userService.postSignUp(value).subscribe(
         success => {
           console.log("Create Account successfully!");
-        }, errorRes => { 
-          console.log("Status:", errorRes.status); 
-          console.log("Error:", errorRes.error.error); 
-          console.log("Detail:", errorRes.error.trace); 
+          this.show_success = true;
+          // this.reset();
+          // this.router.navigate(['/sign-in']);
+        }, errorRes => {
+
+          console.log("Status:", errorRes.status);
+          console.log("Error:", errorRes.error.error);
+          console.log("Detail:", errorRes.error.trace);
+          let errorDetail = errorRes.error.trace;
+          if (errorDetail.indexOf('username_UNIQUE')) {
+            this.userName_errorMessage = "User Name is already existed!"
+            this.userName_required = true;
+          } else if (errorDetail.indexOf('username_UNIQUE')) {
+
+          } else {
+            this.show_fail = true;
+            this.error_message = errorRes.error.error;
+          }
         });
     }
   }
@@ -45,8 +64,14 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     if (!value.userName) {
+      this.userName_errorMessage = "User Name is required!"
       this.userName_required = true;
       return false;
+    }
+    if(this.seller){
+      value.role = 2;
+    }else{
+      value.role = 1;
     }
     return true;
   }
@@ -59,5 +84,7 @@ export class RegisterComponent implements OnInit {
     this.seller = false;
     this.name_required = false;
     this.userName_required = false;
+    this.show_success = false;
+    this.show_fail = false;
   }
 }

@@ -10,9 +10,12 @@
     <label for="inputPassword" class="sr-only">Password</label>
     <input ngModel name="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
       required>
-      <div *ngIf="password_required" class="alert alert-danger" (click)="password_required=!password_required">
-        Password is required.
-      </div>
+    <div *ngIf="password_required" class="alert alert-danger" (click)="password_required=!password_required">
+      Password is required.
+    </div>
+    <div *ngIf="login_fail" class="alert alert-danger" (click)="login_fail=!login_fail">
+      {{login_fail_message}}
+    </div>
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me

@@ -17,7 +17,7 @@ public class CORSConf {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				if (LOG.isInfoEnabled()) {
-					LOG.info("初始化 CORSConfiguration 配置");
+					LOG.info("init CORSConfiguration");
 				}
 				registry.addMapping("/*").allowedHeaders("*").allowedMethods("*").allowedOrigins("*")
 						.allowCredentials(true);

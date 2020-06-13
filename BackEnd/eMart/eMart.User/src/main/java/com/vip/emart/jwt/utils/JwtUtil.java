@@ -6,8 +6,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
@@ -21,8 +19,7 @@ public class JwtUtil {
     /**
      * 密钥
      */
-    @Value("${jwt.secret}")
-    private static String SECRET;
+    private static String SECRET = "eMart";
 
     /**
      * 过期时间

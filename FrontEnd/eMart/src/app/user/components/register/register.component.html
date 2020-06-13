@@ -6,14 +6,16 @@
       <div *ngIf="name_required" class="alert alert-danger" (click)="name_required=!name_required">
         Name is required.
       </div>
-      <input ngModel name="userName" type="userName" id="userName" class="form-control" placeholder="User Name" required>
+      <input ngModel name="userName" type="userName" id="userName" class="form-control" placeholder="User Name"
+        required>
       <div *ngIf="userName_required" class="alert alert-danger" (click)="userName_required=!userName_required">
-        User Name is required.
+        {{userName_errorMessage}}.
       </div>
       <input ngModel name="password" type="password" id="password" class="form-control" placeholder="Password" required>
       <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
       <input ngModel name="email" type="email" id="email" class="form-control" placeholder="Email Address" required>
-      <input ngModel name="phone_number" type="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" required>
+      <input ngModel name="phone_number" type="phoneNumber" id="phoneNumber" class="form-control"
+        placeholder="Phone Number" required>
       <div class="custom-control custom-radio custom-control-inline ">
         <input type="radio" id="buyer" name="role" class="custom-control-input" (click)="chooseSeller(false)" checked>
         <label class="custom-control-label" for="buyer">Buyer</label>
@@ -23,14 +25,24 @@
         <label class="custom-control-label" for="seller">Seller</label>
       </div>
       <div *ngIf="seller">
-        <input ngModel name="companyName" type="companyName" id="companyName" class="form-control" placeholder="Company Name" required>
-        <textarea ngModel name="brief" type="brief" id="brief" class="form-control" placeholder="Brief Of Company" required></textarea> 
+        <input ngModel name="companyName" type="companyName" id="companyName" class="form-control"
+          placeholder="Company Name" required>
+        <textarea ngModel name="brief" type="brief" id="brief" class="form-control" placeholder="Brief Of Company"
+          required></textarea>
         <input ngModel name="gstin" type="gstin" id="gstin" class="form-control" placeholder="GSTIN" required>
-        <input ngModel name="postalAddress" type="postalAddress" id="postalAddress" class="form-control" placeholder="Postal Address" required>
+        <input ngModel name="postalAddress" type="postalAddress" id="postalAddress" class="form-control"
+          placeholder="Postal Address" required>
         <input ngModel name="webSite" type="webSite" id="webSite" class="form-control" placeholder="Web Site" required>
       </div>
     </div>
-    
+
+    <div *ngIf="show_success" class="mb-3 font-weight-normal">
+      Create account successfully!. <a href="sign-in">Login Now?</a>
+    </div>
+    <div *ngIf="show_fail" class="alert alert-danger">
+      Create account failed! Please contact Administrator {{error_message}}
+    </div>
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
     <hr class="mb-4">
     <p class="small text-center text-gray-soft">Already have an account? <a href="sign-in">Sign in</a></p>

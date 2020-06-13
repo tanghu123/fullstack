@@ -49,6 +49,17 @@ public class User {
 	
 	@Column(name = "role")
 	private int role;
+	
+	@Column(name = "status")
+	private int status;
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 	public int getId() {
 		return id;
@@ -160,7 +171,7 @@ public class User {
 		return "User [id=" + id + ", name=" + name + ", userName=" + userName + ", password=" + password + ", email="
 				+ email + ", phone_number=" + phone_number + ", create_date=" + create_date + ", company_name="
 				+ company_name + ", GSTIN=" + GSTIN + ", company_brief=" + company_brief + ", postal_address="
-				+ postal_address + ", website=" + website + ", role=" + role + "]";
+				+ postal_address + ", website=" + website + ", role=" + role + ", status=" + status + "]";
 	}
 
 }
