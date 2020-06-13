@@ -12,9 +12,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vip</groupId>
-	<artifactId>eMart.User</artifactId>
+	<artifactId>eMart</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eMart.User</name>
+	<name>eMart</name>
 	<description>User service of eMart project</description>
 
 	<properties>
