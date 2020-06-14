@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "subcategory")
 public class SubCategory implements Serializable {
@@ -22,14 +24,6 @@ public class SubCategory implements Serializable {
 	 */
 	private static final long serialVersionUID = -3553196348377789579L;
 
-	public SubCategory(String name, Category category, String brief, BigDecimal gst) {
-		super();
-		this.name = name;
-		this.category = category;
-		this.brief = brief;
-		this.gst = gst;
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -37,10 +31,21 @@ public class SubCategory implements Serializable {
 	private String name;
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
 	@JoinColumn(name = "category_id")
+	@JsonIgnore
 	private Category category;
 	@Column
 	private String brief;
+
 	@Column(nullable = false)
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private BigDecimal gst;
 
 	public String getName() {
@@ -77,8 +82,8 @@ public class SubCategory implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SubCategory [id=" + id + ", name=" + name + ", category=" + category.toString() + ", brief=" + brief + ", gst="
-				+ gst + "]";
+		return "SubCategory [id=" + id + ", name=" + name + ", category=" + category.toString() + ", brief=" + brief
+				+ ", gst=" + gst + "]";
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.vip.emart.admin.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -21,13 +22,7 @@ public class Category implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4351814543453790193L;
-
-	public Category(String name, String brief, Set<SubCategory> subCategories) {
-		super();
-		this.name = name;
-		this.brief = brief;
-	}
-
+    
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -37,13 +32,13 @@ public class Category implements Serializable {
 	private String brief;
 	
 	@OneToMany(mappedBy = "category",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	private Set<SubCategory> subCategorys;
+	private List<SubCategory> subCategorys;
 
-	public Set<SubCategory> getSubCategorys() {
+	public List<SubCategory> getSubCategorys() {
 		return subCategorys;
 	}
 
-	public void setSubCategorys(Set<SubCategory> subCategorys) {
+	public void setSubCategorys(List<SubCategory> subCategorys) {
 		this.subCategorys = subCategorys;
 	}
 

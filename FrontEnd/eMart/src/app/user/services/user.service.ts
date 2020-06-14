@@ -18,13 +18,13 @@ export class UserService {
   }
 
   postSignIn(user) {
-    return this.http.post(`${environment.baseUrl}/login`, JSON.stringify(user), httpOptions);
+    return this.http.post(`${environment.userUrl}/login`, JSON.stringify(user), httpOptions);
   }
 
   postSignUp(user) {
     // return this.http.delete('/user/5',httpOptions);
     // console.log(JSON.stringify(user));
-    return this.http.post(`${environment.baseUrl}/user`, JSON.stringify(user), httpOptions);
+    return this.http.post(`${environment.userUrl}/user`, JSON.stringify(user), httpOptions);
   }
 
   deleteUser(id){
