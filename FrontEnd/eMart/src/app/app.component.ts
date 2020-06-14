@@ -16,13 +16,13 @@ export class AppComponent {
 
   //Hide Header Footer in Sign in Signup page
   ngOnInit() {
-    if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
-      switch (sessionStorage.getItem('role')) {
-        case ('0'): this.router.navigate(['admin/dashboard']); break;
-        case ('2'): this.router.navigate(['seller/item']); break;
-        default: this.router.navigate(['buyer/products']);
-      }
-    }
+    // if (sessionStorage.getItem('token') && sessionStorage.getItem('role')) {
+    //   switch (sessionStorage.getItem('role')) {
+    //     case ('0'): this.router.navigate(['admin/dashboard']); break;
+    //     case ('2'): this.router.navigate(['seller/item']); break;
+    //     default: this.router.navigate(['buyer/products']);
+    //   }
+    // }
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationEnd) {
