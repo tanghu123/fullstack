@@ -19,5 +19,24 @@ CREATE TABLE `emart`.`user` (
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
+DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 COMMENT = 'User table to store user information';
+
+#Create table category
+CREATE TABLE `emart`.`category` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `brief` varchar(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `emart`.`subcategory` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `brief` varchar(255) DEFAULT NULL,
+  `gst` decimal(19,2) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (category_id) REFERENCES `emart`.category (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
