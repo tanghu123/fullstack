@@ -1,7 +1,7 @@
-package com.vip.emart.jwt.filter;
+package com.vip.emart.user.jwt.filter;
 
 import com.auth0.jwt.interfaces.Claim;
-import com.vip.emart.jwt.utils.JwtUtil;
+import com.vip.emart.user.jwt.utils.JwtUtil;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

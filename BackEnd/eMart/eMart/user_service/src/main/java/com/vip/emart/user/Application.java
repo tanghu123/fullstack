@@ -1,4 +1,4 @@
-package com.vip;
+package com.vip.emart.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

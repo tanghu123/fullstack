@@ -1,0 +1,23 @@
+server:
+  port: 8081
+#mysql
+spring:
+  application:
+    name: eMart User Service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/emart?useunicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: emart
+    password: gdsafd2#@rwf1
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# Specify the DBMS
+  jpa:
+    database: MYSQL
+# Show or not log for each sql query
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+# Naming strategy
+# stripped before adding them to the entity manager 
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect

@@ -1,4 +1,4 @@
-package com.vip.emart.conf;
+package com.vip.emart.user.conf;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vip.emart.user.entity.User;
 import com.vip.emart.user.service.UserService;
-import com.vip.emart.utils.eMartUtils;
+import com.vip.emart.user.utils.eMartUtils;
 
 @RestController
 @RequestMapping("user")

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vip.emart.jwt.utils.JwtUtil;
 import com.vip.emart.user.entity.User;
+import com.vip.emart.user.jwt.utils.JwtUtil;
 import com.vip.emart.user.service.UserService;
 
 @RestController

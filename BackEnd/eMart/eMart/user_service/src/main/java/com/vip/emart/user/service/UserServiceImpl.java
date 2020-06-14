@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.vip.emart.user.dao.UserDao;
 import com.vip.emart.user.entity.User;
-import com.vip.emart.utils.eMartUtils;
+import com.vip.emart.user.utils.eMartUtils;
 
 @Service
 public class UserServiceImpl implements UserService {

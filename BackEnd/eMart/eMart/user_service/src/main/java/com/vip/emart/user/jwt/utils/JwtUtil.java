@@ -1,4 +1,4 @@
-package com.vip.emart.jwt.utils;
+package com.vip.emart.user.jwt.utils;
 
 import java.util.Date;
 import java.util.HashMap;

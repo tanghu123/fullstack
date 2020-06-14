@@ -1,4 +1,4 @@
-package com.vip.emart.utils;
+package com.vip.emart.user.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
