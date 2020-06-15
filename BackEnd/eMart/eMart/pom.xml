@@ -47,8 +47,8 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>
-			spring-cloud-starter-netflix-eureka-client
-		</artifactId>
+				spring-cloud-starter-netflix-eureka-client
+			</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -105,5 +105,6 @@
 		<module>admin_service</module>
 		<module>user_service</module>
 		<module>eureka_service</module>
+		<module>zuul_service</module>
 	</modules>
 </project>
