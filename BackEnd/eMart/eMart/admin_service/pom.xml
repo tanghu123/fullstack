@@ -10,12 +10,4 @@
 	<artifactId>admin_service</artifactId>
 	<name>admin_service</name>
 	<description>eMart Admin Service</description>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-	</dependencies>
 </project>

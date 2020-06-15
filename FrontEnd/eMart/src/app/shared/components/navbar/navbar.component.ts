@@ -21,19 +21,24 @@ export class NavbarComponent implements OnInit, DoCheck {
     this.reset();
     if (sessionStorage.getItem('token')) {
       this.isSignin = true;
+    } else {
+      this.isBuyer = true;
     }
     if (sessionStorage.getItem('role')) {
       switch (parseInt(sessionStorage.getItem('role'))) {
-        case (0): this.isAdmin = true; break;
-        case (2): this.isSellter = true; break;
-        default: this.isBuyer = true;
+        case (0): this.isAdmin = true; this.isBuyer=this.isSellter=false; break;
+        case (2): this.isSellter = true; this.isAdmin = this.isBuyer = false;break;
+        default: this.isBuyer = true; this.isAdmin = this.isSellter=false;
       }
+    } else {
+      //default user is buyer.
+      this.isBuyer = true;
     }
   }
 
   reset() {
     this.isSignin = false;
-    this.isBuyer = false;
+    this.isBuyer = true;
     this.isSellter = false;
     this.isAdmin = false;
   }
@@ -49,6 +54,7 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   signOut() {
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
     this.router.navigate(['sign-in']);
   }
 
