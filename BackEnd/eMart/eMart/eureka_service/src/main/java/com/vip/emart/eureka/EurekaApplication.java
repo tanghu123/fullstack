@@ -1,15 +1,15 @@
-package com.vip.emart.user;
+package com.vip.emart.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication(scanBasePackages = "com.vip.emart.*")
-@EnableEurekaClient
-public class UserApplication {
+@EnableEurekaServer
+public class EurekaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserApplication.class, args);
+		SpringApplication.run(EurekaApplication.class, args);
 	}
 
 }

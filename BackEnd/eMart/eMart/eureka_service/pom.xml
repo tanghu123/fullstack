@@ -7,18 +7,15 @@
 		<artifactId>eMart</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>admin_service</artifactId>
-	<name>admin_service</name>
-	<description>eMart Admin Service</description>
+	<artifactId>eureka_service</artifactId>
+	<name>eureka service</name>
+	<description>eureka server</description>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>
+			spring-cloud-starter-netflix-eureka-server
+		</artifactId>
 		</dependency>
 	</dependencies>
 </project>
