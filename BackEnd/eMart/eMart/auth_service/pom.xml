@@ -7,9 +7,9 @@
 		<artifactId>eMart</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>user_service</artifactId>
-	<name>user_service</name>
-	<description>eMart User Service</description>
+	<artifactId>auth_service</artifactId>
+	<name>auth_service</name>
+	<description>eMart Auth Service</description>
 
 	<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
 	<dependencies>

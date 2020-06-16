@@ -103,7 +103,7 @@
 		<module>buyer_service</module>
 		<module>seller_service</module>
 		<module>admin_service</module>
-		<module>user_service</module>
+		<module>auth_service</module>
 		<module>eureka_service</module>
 		<module>zuul_service</module>
 	</modules>

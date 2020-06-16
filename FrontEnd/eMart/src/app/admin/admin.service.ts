@@ -18,7 +18,7 @@ export class AdminService {
   }
 
   getCategories(){
-    return this.http.get(`${environment.adminUrl}/category`,httpOptions);
+    return this.http.get(`${environment.baseUrl}/category`,httpOptions);
   }
   // postSignIn(user) {
   //   return this.http.post(`${environment.baseUrl}/login`, JSON.stringify(user), httpOptions);
