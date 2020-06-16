@@ -18,21 +18,21 @@ export class UserService {
   }
 
   postSignIn(user) {
-    return this.http.post(`${environment.baseUrl}/login`, JSON.stringify(user), httpOptions);
+    return this.http.post(`${environment.baseUrl}/api/auth/login`, JSON.stringify(user), httpOptions);
   }
 
   postSignUp(user) {
     // return this.http.delete('/user/5',httpOptions);
     // console.log(JSON.stringify(user));
-    return this.http.post(`${environment.baseUrl}/user`, JSON.stringify(user), httpOptions);
+    return this.http.post(`${environment.baseUrl}/api/auth/user`, JSON.stringify(user), httpOptions);
   }
 
   deleteUser(id){
-    return this.http.delete('/user/'+id,httpOptions);
+    return this.http.delete(`${environment.baseUrl}/api/auth/user/`+id,httpOptions);
   }
 
   postUpdateUser(user) {
-    return this.http.put('/user', JSON.stringify(user), httpOptions);
+    return this.http.put(`${environment.baseUrl}/api/auth/user`, JSON.stringify(user), httpOptions);
   }
 
 }

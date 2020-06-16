@@ -4,7 +4,7 @@ spring:
   application:
     name: zuul-service
 zuul:
-  #prefix: /api   # 访问网关路径的前缀（在映射路径的前面，一般用于区别开发的版本）
+  prefix: /api   # 访问网关路径的前缀（在映射路径的前面，一般用于区别开发的版本）
   routes:
     admin-service:       # 随意写的区分不同映射服务器的名称（只是区分不同的映射服务器）
       path: /admin/**    # 自定义映射服务器路径的名称（相当于key，外部访问这个地址会映射到下面的service-id这个value值。然后从eureka服务列表找到对应服务名称，进而负载均衡的请求一个服务器）
